@@ -1,0 +1,163 @@
+/* ===== Глобальные стили ===== */
+:root {
+  --primary-color: #4361ee;       /* Основной синий */
+  --secondary-color: #3a0ca3;    /* Темно-синий */
+  --accent-color: #f72585;       /* Акцентный розовый */
+  --text-dark: #2b2d42;          /* Темный текст */
+  --text-light: #f8f9fa;         /* Светлый текст */
+  --bg-light: #f8f9fa;           /* Светлый фон */
+  --card-bg: #ffffff;            /* Фон карточек */
+  --border-radius: 12px;         /* Закругление углов */
+}
+
+body {
+  font-family: 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  color: var(--text-dark);
+  background-color: var(--bg-light);
+  padding: 20px;
+}
+
+/* ===== Типографика ===== */
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: var(--secondary-color);
+  text-align: center;
+  margin: 2rem 0;
+  letter-spacing: -0.5px;
+}
+
+h2 {
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+h3 {
+  font-size: 1.3rem;
+  color: var(--secondary-color);
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: var(--accent-color);
+}
+
+/* ===== Карточки и контейнеры ===== */
+#app {
+  display: flex;
+  gap: 30px;
+}
+
+.heroes-list, .hero-details {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 25px;
+}
+
+.hero-details-container {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  margin-top: 25px;
+}
+
+.hero-stats {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.hero-stats-section {
+  padding: 25px;
+  border-radius: var(--border-radius);
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.hero-stats-section:hover {
+  transform: translateY(-3px);
+}
+
+/* ===== Элементы интерфейса ===== */
+.hero-card {
+  padding: 15px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.hero-card:hover {
+  background: #f8f0ff;
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(67, 97, 238, 0.15);
+}
+
+.hero-photo {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: var(--border-radius);
+  border: 3px solid white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.hero-photo:hover {
+  transform: scale(1.02);
+}
+
+.detail-item {
+  margin-bottom: 12px;
+  font-size: 1.05rem;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: var(--primary-color);
+  display: inline-block;
+  width: 120px;
+}
+
+/* ===== Адаптивность ===== */
+@media (max-width: 900px) {
+  .hero-photo {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-details-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero-photo {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    max-height: 400px;
+    margin-bottom: 25px;
+  }
+}
