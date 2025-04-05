@@ -15,21 +15,30 @@ async function initApp() {
 }
 
 function renderHeroesList(heroes) {
-  heroesListEl.innerHTML = heroes
-    .map(hero => `
-      <div class="hero-card" data-id="${hero.id}">
-        <h3>${hero.name}</h3>
-      </div>
-    `)
-    .join('');
+  heroesListEl.innerHTML = `
+    <div class="heroes-list-container">
+      ${heroes.map(hero => `
+        <div class="hero-card" data-id="${hero.id}">
+          <h3>${hero.name}</h3>
+        </div>
+      `).join('')}
+    </div>
+  `;
 
   document.querySelectorAll('.hero-card').forEach(card => {
     card.addEventListener('click', async () => {
+      document.querySelectorAll('.hero-card').forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+      
       const heroId = card.getAttribute('data-id');
       const hero = await getHeroById(heroId);
       renderHeroDetails(hero);
     });
   });
+
+  if (heroes.length > 0) {
+    document.querySelector('.hero-card').classList.add('active');
+  }
 }
 
 function renderHeroDetails(hero) {

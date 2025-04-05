@@ -8,7 +8,7 @@ export async function getAllSuperheroes() {
     }
 
     const shuffled = (await response.json()).sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, 10)
+    return shuffled.slice(0, 30)
   } catch (error) {
     console.error('Error fetching heroes:', error);
     return [];
